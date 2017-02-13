@@ -1,0 +1,22 @@
+#this ignore file is served in a whitelist style
+*
+
+# tex files
+!*.tex
+
+# bibliography files
+!*.bib
+
+# bib style files
+!*.bst
+
+# class files
+!*.cls
+
+#gitignore file
+!.gitignore
+
+#document and readme file
+!*.md
+
+#xml file
