@@ -23,6 +23,9 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 <!v::Send, ^v
 <!x::Send, ^x
 
+;Left Cmd + Shift to duplicate current line to next line
+<!<+D::Send {Home}{Shift down}{End}{Shift up}^C{End}{Enter}^V
+
 ;during search, go to next
 <!g::Send, ^g
 <!<+g::Send, ^+g
