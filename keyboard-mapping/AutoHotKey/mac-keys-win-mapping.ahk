@@ -1,7 +1,4 @@
-﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
-; #Warn  ; Enable warnings to assist with detecting common errors.
-SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
-SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+﻿SetTitleMatchMode, 2
 
 ;following section mimics command-q and command-w
 ;behaviour to close windows
@@ -24,7 +21,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 <!x::Send, ^x
 
 ;Left Cmd + Shift to duplicate current line to next line
-<!<+D::Send {Home}{Shift down}{End}{Shift up}^C{End}{Enter}^V
+;<!<+D::Send {Home}{Shift down}{End}{Shift up}^C{End}{Enter}^V
 
 ;during search, go to next
 <!g::Send, ^g
@@ -50,19 +47,26 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 
 ; Operations in Chrome mimic operations in Mac Safari
-; 1. left Cmd t for new tab
-; SetTitleMatchMode, 2
 #ifWinActive ahk_class Chrome_WidgetWin_1
-<!t::Send, ^t
-; 2. left Cmd w to close tab
-<!w::Send, ^w
-; 3. left ctrl Cmd t to recover last tab
-<+<!t::Send, ^+t
-; 4, Cmd+Left Click to open new Tab
-!LButton::Send {Control down}{LButton}{Control up}
-; Cmd+Shift left/right to switch Tab Left/Right
-<!<+Left::Send ^+{Tab}
-<!<+Right::Send ^{Tab}
-;5 Cmd L to focus URL input
-<!l::Send ^l
+<!t::Send, ^t	; 1. left Cmd t for new tab
+<!w::Send, ^w	; 2. left Cmd w to close tab 
+<+<!t::Send, ^+t; 3. left ctrl Cmd t to recover last tab
+!LButton::Send {Control down}{LButton}{Control up}	; 4, Cmd+Left Click to open new Tab
+<!l::Send ^l	;5 Cmd L to focus URL input
+<!<+Left::Send ^+{Tab}	; 6. Cmd+Shift left/right to switch Tab Left/Right
+<!<+Right::Send ^{Tab}	; 6. Cmd+Shift left/right to switch Tab Left/Right
+<!r::Send {F5}		; 7. Cmd+R to refresh the current page
+return
 #ifWinActive
+
+
+; Visual Studio Setting for easier shortcuts trigger
+#IfWinActive, Visual Studio
+<!k::Send ^k	; Cmd K map to Ctrl K, for shortcut combination trigger
+<!t::Send ^t	; Cmd T for debug unit test trigger
+<!w::Send, ^{F4}; Cmd W for close tabs
+<!n::Send, ^+A	; Cmd N for create new Items
+<!r::Send, ^r	; Refactor Trigger
+<!u::Send, ^u	; Cmd K, Cmd U for uncomment
+return
+#IfWinActive
