@@ -23,10 +23,6 @@
 ;Left Cmd + Shift to duplicate current line to next line
 ;<!<+D::Send {Home}{Shift down}{End}{Shift up}^C{End}{Enter}^V
 
-;during search, go to next
-<!g::Send, ^g
-<!<+g::Send, ^+g
-
 ;left Cmd Z/Cmd Shift Z for Undo/Redo
 <!z::Send, ^z
 <!<+z::Send, ^+z
@@ -34,6 +30,12 @@
 ; right Ctrl+Scroll lock to lock screen
 ;{RControl down}Scrolllock{RControl Up}::Send #l
 ;^{ScrollLock}::Send, #l
+
+; Left Option+Backspace to Delete previous word(Mapping to Win+Backspace)
+<#BackSpace::Send, {Control down}{BackSpace}{Control up}
+
+; Left Option+Del to Delete following word(Mapping to Win+Del)
+<#Del::Send, {Control down}{Del}{Control up}
 
 ;Cmd backspace to delete from caret to the begining of a line
 <!BackSpace::Send {Shift down}{Home}{Shift up}{BackSpace}
@@ -56,17 +58,27 @@
 <!<+Left::Send ^+{Tab}	; 6. Cmd+Shift left/right to switch Tab Left/Right
 <!<+Right::Send ^{Tab}	; 6. Cmd+Shift left/right to switch Tab Left/Right
 <!r::Send {F5}		; 7. Cmd+R to refresh the current page
+<!g::Send, ^g		; 8. during search, go to next
+<!<+g::Send, ^+g	; 8. go to previous
 return
 #ifWinActive
 
-
 ; Visual Studio Setting for easier shortcuts trigger
+; Cmd K map to Ctrl K, for shortcut combination trigger
+; Cmd T for debug unit test trigger
+; Cmd W for close tabs
+; Cmd N for reate new Items
+; Refactor Trigger
+; Cmd K, Cmd U for uncomment
+; Cmd+Shift+F, Search in Entire Document
+
 #IfWinActive, Visual Studio
-<!k::Send ^k	; Cmd K map to Ctrl K, for shortcut combination trigger
-<!t::Send ^t	; Cmd T for debug unit test trigger
-<!w::Send, ^{F4}; Cmd W for close tabs
-<!n::Send, ^+A	; Cmd N for create new Items
-<!r::Send, ^r	; Refactor Trigger
-<!u::Send, ^u	; Cmd K, Cmd U for uncomment
+<!k::Send, ^k
+<!t::Send, ^t
+<!w::Send, ^{F4}
+<!n::Send, ^+A	
+<!r::Send, ^r	
+<!u::Send, ^u
+<!<+F::Send, ^+F
 return
 #IfWinActive
