@@ -60,6 +60,8 @@
 <!r::Send {F5}		; 7. Cmd+R to refresh the current page
 <!g::Send, ^g		; 8. during search, go to next
 <!<+g::Send, ^+g	; 8. go to previous
+<!b::Send, ^b		; 9. bold text in web editor
+<!i::Send, ^i		; 10. italic text in web editor
 return
 #ifWinActive
 
