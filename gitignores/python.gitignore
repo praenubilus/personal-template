@@ -1,5 +1,13 @@
-#python cache folder
-__pycache__/
+###########################
+# Cache files
+###########################
+# python cache
+**__pycache__/
+**.__pycache__/
+# pytest cache folder
+**.pytest_cache
+**pytest_cache
+
 
 ###########################
 # System related files
@@ -7,3 +15,10 @@ __pycache__/
 
 # OSX DS_Store file
 .DS_Store
+
+###########################
+# Environment files
+###########################
+# vscode folder
+.vscode
+vscode
