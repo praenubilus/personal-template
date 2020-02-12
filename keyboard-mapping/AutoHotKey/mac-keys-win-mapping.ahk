@@ -44,9 +44,11 @@
 
 ;Cmd Shift Left to select from caret to the beginning of a line
 <!<+Left::Send {Shift down}{Home}{Shift up}
-;Cmd Shift Left to select from caret to the end of a line
+;Cmd Shift Right to select from caret to the end of a line
 <!<+Right::Send {Shift down}{End}{Shift up}
 
+; Shift+PrintScreen to mimic Cmd Shift S for partial Screenshot
++PrintScreen::Send #+s
 
 ; Operations in Chrome mimic operations in Mac Safari
 #ifWinActive ahk_class Chrome_WidgetWin_1
