@@ -1,24 +1,27 @@
 ﻿SetTitleMatchMode, 2
 
-;following section mimics command-q and command-w
-;behaviour to close windows
-;note these had to be disabled below for the
-;command to ctrl key remaps
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Global 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;Cmd q to close window/tab, left alt+q ==> alt+F4
 <!q::Send, !{F4}  
 
-;Cmd F for search
+;Cmd F for search, left alt+f ==> ctrl+f
 <!f::Send, ^f
 
-;Cmd A to select All
+;Cmd A to select All, left alt+a ==> ctrl+a
 <!a::Send, ^a
 
-;save file Cmd S
+;Cmd S to save file, left alt+s ==> ctrl+a
 <!s::Send, ^s
 
-;left Cmd c/v to copy/paste, left Cmd x to cut
-<!c::Send, ^c
-<!v::Send, ^v
-<!x::Send, ^x
+;[Windows terminal] has been excluded
+;Cmd c/v/x to copy/paste/cut, left alt+c/v/x ==> ctrl c/v/x
+if not WinActive("ahk_exe" . WindowsTerminal)
+    <!c::Send, ^c
+    <!v::Send, ^v
+    <!x::Send, ^x
 
 ;Left Cmd + Shift to duplicate current line to next line
 ;<!<+D::Send {Home}{Shift down}{End}{Shift up}^C{End}{Enter}^V
@@ -26,10 +29,6 @@
 ;left Cmd Z/Cmd Shift Z for Undo/Redo
 <!z::Send, ^z
 <!<+z::Send, ^+z
-
-; right Ctrl+Scroll lock to lock screen
-;{RControl down}Scrolllock{RControl Up}::Send #l
-;^{ScrollLock}::Send, #l
 
 ; Left Option+Backspace to Delete previous word(Mapping to Win+Backspace)
 <#BackSpace::Send, {Control down}{BackSpace}{Control up}
@@ -39,6 +38,7 @@
 
 ;Cmd backspace to delete from caret to the begining of a line
 <!BackSpace::Send {Shift down}{Home}{Shift up}{BackSpace}
+
 ;Cmd Del to delete from caret to the end of a line
 <!Del::Send {Shift down}{End}{Shift up}{Del}
 
@@ -49,6 +49,11 @@
 
 ; Shift+PrintScreen to mimic Cmd Shift S for partial Screenshot
 +PrintScreen::Send #+s
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Chrome
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Operations in Chrome mimic operations in Mac Safari
 #ifWinActive ahk_class Chrome_WidgetWin_1
@@ -66,6 +71,11 @@
 <!i::Send, ^i		; 10. italic text in web editor
 return
 #ifWinActive
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Visual Studio
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 
 ; Visual Studio Setting for easier shortcuts trigger
 ; Cmd K map to Ctrl K, for shortcut combination trigger
