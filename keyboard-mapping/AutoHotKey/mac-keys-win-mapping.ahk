@@ -55,22 +55,21 @@ if not WinActive("ahk_exe" . WindowsTerminal)
 ;;; Chrome
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; Operations in Chrome mimic operations in Mac Safari
-#ifWinActive ahk_class Chrome_WidgetWin_1
-<!t::Send, ^t	; 1. left Cmd t for new tab
-<!w::Send, ^w	; 2. left Cmd w to close tab 
-<+<!t::Send, ^+t; 3. left ctrl Cmd t to recover last tab
-!LButton::Send {Control down}{LButton}{Control up}	; 4, Cmd+Left Click to open new Tab
-<!l::Send ^l	;5 Cmd L to focus URL input
-<!<+Left::Send ^+{Tab}	; 6. Cmd+Shift left/right to switch Tab Left/Right
-<!<+Right::Send ^{Tab}	; 6. Cmd+Shift left/right to switch Tab Left/Right
-<!r::Send {F5}		; 7. Cmd+R to refresh the current page
-<!g::Send, ^g		; 8. during search, go to next
-<!<+g::Send, ^+g	; 8. go to previous
-<!b::Send, ^b		; 9. bold text in web editor
-<!i::Send, ^i		; 10. italic text in web editor
-return
-#ifWinActive
+;#ifWinActive ahk_class Chrome_WidgetWin_1
+if WinActive("ahk_exe" . chrome)
+    <!t::Send, ^t	; Cmd t for new tab
+    <!w::Send, ^w	; Cmd w to close tab 
+    <+<!t::Send, ^+t; Shift + Cmd t to recover last tab
+    !LButton::Send {Control down}{LButton}{Control up}	; Cmd+Left Click to open new Tab
+    <!l::Send ^l	; Cmd L to focus URL input
+    <^<+Left::Send ^+{Tab}	; Ctrl+Shift left to switch Tab Left
+    <^<+Right::Send ^{Tab}	; Ctrl+Shift right to switch Tab Right
+    <!r::Send {F5}		; Cmd+R to refresh the current page
+    <!g::Send, ^g		; go to next search result
+    <!<+g::Send, ^+g	; go to previous search result
+    <!b::Send, ^b		; bold text in web text editor
+    <!i::Send, ^i		; italic text in web editor
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Visual Studio
