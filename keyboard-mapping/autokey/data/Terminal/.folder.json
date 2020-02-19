@@ -17,7 +17,7 @@
         "hotKey": null
     },
     "filter": {
-        "regex": null,
-        "isRecursive": false
+        "regex": "gnome-terminal-server.Gnome-terminal",
+        "isRecursive": true
     }
 }
