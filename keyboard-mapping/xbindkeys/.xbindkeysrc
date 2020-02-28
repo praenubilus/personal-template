@@ -1,0 +1,5 @@
+# mouse left click to trigger special comb: ctrl+alt+shift+1
+# then will be captured by autokey to simulate a mouse click event
+# Since the xdotool has a cooldown overhead for xorg, so manually add the sleep to reset
+"xdotool sleep 0.2 keydown Ctrl click 1 keyup Ctrl"
+alt + b:1
