@@ -16,12 +16,14 @@
 ;Cmd S to save file, left alt+s ==> ctrl+a
 <!s::Send, ^s
 
+
 ;[Windows terminal] has been excluded
 ;Cmd c/v/x to copy/paste/cut, left alt+c/v/x ==> ctrl c/v/x
-if not WinActive("ahk_exe" . WindowsTerminal)
+#If not WinActive("ahk_exe WindowsTerminal.exe")
     <!c::Send, ^c
     <!v::Send, ^v
     <!x::Send, ^x
+#If
 
 ;Left Cmd + Shift to duplicate current line to next line
 ;<!<+D::Send {Home}{Shift down}{End}{Shift up}^C{End}{Enter}^V
@@ -55,8 +57,7 @@ if not WinActive("ahk_exe" . WindowsTerminal)
 ;;; Chrome
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;#ifWinActive ahk_class Chrome_WidgetWin_1
-if WinActive("ahk_exe" . chrome)
+#If WinActive("ahk_exe chrome.exe")
     <!t::Send, ^t	; Cmd t for new tab
     <!w::Send, ^w	; Cmd w to close tab 
     <+<!t::Send, ^+t; Shift + Cmd t to recover last tab
@@ -69,12 +70,24 @@ if WinActive("ahk_exe" . chrome)
     <!<+g::Send, ^+g	; go to previous search result
     <!b::Send, ^b		; bold text in web text editor
     <!i::Send, ^i		; italic text in web editor
+#If
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Visual Studio
+;;; Visual Studio Code
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+; Win left mapping to ctrl left
+#If WinActive("ahk_exe Code.exe")
+	<#Down::Send, ^#{PgDn} ; win+down for move line down, setting to ctrl+win+page down
+	<#Up::Send, ^#{PgUp}   ; win+down for move line up, setting to ctrl+win+page up
+#If   
+;    !LButton::Send {Control down}{LButton}{Control up}	; Cmd+Left Click to open new Tab
+;    <!l::Send ^l	; C
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Visual Studio, Inactive now
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Visual Studio Setting for easier shortcuts trigger
 ; Cmd K map to Ctrl K, for shortcut combination trigger
@@ -85,13 +98,13 @@ if WinActive("ahk_exe" . chrome)
 ; Cmd K, Cmd U for uncomment
 ; Cmd+Shift+F, Search in Entire Document
 
-#IfWinActive, Visual Studio
-<!k::Send, ^k
-<!t::Send, ^t
-<!w::Send, ^{F4}
-<!n::Send, ^+A	
-<!r::Send, ^r	
-<!u::Send, ^u
-<!<+F::Send, ^+F
-return
-#IfWinActive
+;#IfWinActive, Visual Studio
+;<!k::Send, ^k
+;<!t::Send, ^t
+;<!w::Send, ^{F4}
+;<!n::Send, ^+A	
+;<!r::Send, ^r	
+;<!u::Send, ^u
+;<!<+F::Send, ^+F
+;return
+;#IfWinActive
