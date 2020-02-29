@@ -81,6 +81,8 @@
 #If WinActive("ahk_exe Code.exe")
 	<#Down::Send, ^#{PgDn} ; win+down for move line down, setting to ctrl+win+page down
 	<#Up::Send, ^#{PgUp}   ; win+down for move line up, setting to ctrl+win+page up
+	<#Left::Send, ^#{NumpadSub} ; win+left prev word start, setting to ctrl+win+numpad substract
+	<#Right::Send, ^#{NumpadAdd}   ; win+right for next word end, setting to ctrl+win+numpad add
 #If   
 ;    !LButton::Send {Control down}{LButton}{Control up}	; Cmd+Left Click to open new Tab
 ;    <!l::Send ^l	; C
