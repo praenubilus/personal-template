@@ -38,8 +38,6 @@
 ; Left Option+Del to Delete following word(Mapping to Win+Del)
 <#Del::Send, {Control down}{Del}{Control up}
 
-;Cmd backspace to delete from caret to the begining of a line
-<!BackSpace::Send {Shift down}{Home}{Shift up}{BackSpace}
 
 ;Cmd Del to delete from caret to the end of a line
 <!Del::Send {Shift down}{End}{Shift up}{Del}
@@ -70,6 +68,7 @@
     <!<+g::Send, ^+g	; go to previous search result
     <!b::Send, ^b		; bold text in web text editor
     <!i::Send, ^i		; italic text in web editor
+    <!BackSpace::Send {Shift down}{Home}{Shift up}{BackSpace} ;Cmd backspace to delete from caret to the begining of a line
 #If
 
 
@@ -83,6 +82,8 @@
 	<#Up::Send, ^#{PgUp}   ; win+down for move line up, setting to ctrl+win+page up
 	<#Left::Send, ^#{NumpadSub} ; win+left prev word start, setting to ctrl+win+numpad substract
 	<#Right::Send, ^#{NumpadAdd}   ; win+right for next word end, setting to ctrl+win+numpad add
+	<#<+Up::Send, +!{Up} ; win+shift+up for copy line up, mapping to default shift+alt+up
+	<#<+Down::Send, +!{Down} ; win+shift+down for copy line down, mapping to default shift+alt+down
 #If   
 ;    !LButton::Send {Control down}{LButton}{Control up}	; Cmd+Left Click to open new Tab
 ;    <!l::Send ^l	; C
