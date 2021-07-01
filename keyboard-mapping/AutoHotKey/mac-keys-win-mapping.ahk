@@ -55,7 +55,7 @@
 ;;; Chrome
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-#If WinActive("ahk_exe chrome.exe")
+#If WinActive("ahk_exe chrome.exe") or WinActive("ahk_exe msedge.exe") 
     <!t::Send, ^t	; Cmd t for new tab
     <!w::Send, ^w	; Cmd w to close tab 
     <+<!t::Send, ^+t; Shift + Cmd t to recover last tab
